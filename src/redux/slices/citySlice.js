@@ -1,32 +1,15 @@
 import axios from 'axios';
 import { createSlice } from '@reduxjs/toolkit';
-// import faker from 'faker';
 import { batch } from 'react-redux';
 
 import { setSnackbar } from './uiSlice';
 import endPoints from '../../utils/endPoints';
 import { setNeedRefetch } from './forecastSlice';
 
-// const allCities = () => {
-//   let cities = [];
-
-//   for (let i = 0; i < 100; i++) {
-//     const city = {};
-//     city.Key = faker.datatype.uuid();
-//     city.LocalizedName = faker.name.firstName();
-//     city.countryId = faker.name.lastName();
-//     cities.push(city);
-//   }
-
-//   return cities;
-// };
-
 export const citySlice = createSlice({
   name: 'city',
   initialState: {
     autocompleteCities: [],
-    // allCities: allCities(),
-    // city: {},
     city: { Key: 215854, LocalizedName: 'Tel Aviv', countryId: 'IL' },
   },
   reducers: {
@@ -65,7 +48,7 @@ export const getCityByGeolocation = (latLng) => async (dispatch, getState) => {
   } catch (error) {
     dispatch(
       setSnackbar({
-        isOn: true,
+        isOpen: true,
         message:
           'Could not fetch your current location, settling for Tel Aviv.',
       })
@@ -93,7 +76,7 @@ export const getAutocompleteCitiesAsync =
     } catch (error) {
       dispatch(
         setSnackbar({
-          isOn: true,
+          isOpen: true,
           message: 'Failed to fetch list of cities, click to try again',
           handleAction: () => dispatch(getAutocompleteCitiesAsync(query)),
         })

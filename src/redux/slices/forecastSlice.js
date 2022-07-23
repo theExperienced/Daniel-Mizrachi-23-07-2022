@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { batch } from 'react-redux';
 import { cToF, fToC, refineForecastData } from '../../utils';
 import axios from 'axios';
-// import faker from 'faker';
 
 import { setSnackbar } from './uiSlice';
 import endPoints from '../../utils/endPoints';
@@ -105,7 +104,7 @@ export const getFullForecastAsync = (cityKey) => async (dispatch) => {
       dispatch(resetData());
       dispatch(
         setSnackbar({
-          isOn: true,
+          isOpen: true,
           message: 'Failed to fetch forecast data ,click to try again',
           handleAction: () => dispatch(getFullForecastAsync(cityKey)),
         })
