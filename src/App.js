@@ -22,14 +22,13 @@ const App = () => {
   const classes = useStyles();
 
   useEffect(() => {
-    if ('geolocation' in navigator)
-      navigator.geolocation.getCurrentPosition((position) => {
-        dispatch(
-          getCityByGeolocation(
-            `${position.coords.latitude},${position.coords.longitude}`
-          )
-        );
-      });
+    navigator?.geolocation?.getCurrentPosition((position) => {
+      dispatch(
+        getCityByGeolocation(
+          `${position.coords.latitude},${position.coords.longitude}`
+        )
+      );
+    });
   }, []);
 
   useEffect(() => {
