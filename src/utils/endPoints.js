@@ -1,5 +1,5 @@
 export default {
-  BASE: 'http://dataservice.accuweather.com/',
+  BASE: 'https://dataservice.accuweather.com/',
   LOCATIONS: 'locations/v1/cities/',
   FORECASTS: 'forecasts/v1/daily/',
   CURRENT: 'currentconditions/v1/',
